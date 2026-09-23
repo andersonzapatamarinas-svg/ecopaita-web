@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 # Estilos CSS de nivel ejecutivo y académico
-st.markdown("""
+css_code = """
 <style>
     .main-title {
         font-size: 2.2rem;
@@ -61,7 +61,8 @@ st.markdown("""
         font-family: 'Georgia', serif;
     }
 </style>
-""", unsafe_allow_html=True)
+"""
+st.markdown(css_code, unsafe_allow_html=True)
 
 # Encabezado Oficial
 st.markdown('<div class="main-title">PLATAFORMA DIGITAL ECOPAITA IA</div>', unsafe_allow_html=True)
@@ -114,16 +115,17 @@ if opcion == "Diagnóstico Situacional Paita":
         
     st.markdown('<div class="section-header">Fundamentación Científica y Problemática Específica</div>', unsafe_allow_html=True)
     
-    st.markdown("""
-    <div class="academic-card">
-    <b>1. Contaminación Marina y Costera en la Bahía de Paita:</b><br>
-    La acumulación de plásticos de un solo uso en la franja costera (como la playa El Toril) y el derrame sistemático de aceites usados por la flota pesquera artesanal provocan la degradación de los ecosistemas bentónicos, afectando la biodiversidad y la biomasa marina local.<br><br>
-    <b>2. Saturación de Residuos Orgánicos en Mercados de Abastos:</b><br>
-    Los mercados de la zona baja de Paita generan diariamente toneladas de residuos orgánicos sin procesar. La descomposición anaeróbica no controlada de estos desechos produce gases de efecto invernadero y lixiviados que contaminan el suelo urbano.<br><br>
-    <b>3. Brecha de Información y Falta de Canales Digitales:</b><br>
-    A pesar de las iniciativas del Programa Municipal EDUCCA, la ciudadanía carece de una herramienta centralizada y accesible en tiempo real que le permita identificar puntos de acopio autorizados y recibir orientación sobre la correcta disposición de residuos sólidos.
-    </div>
-    """, unsafe_allow_html=True)
+    card_text = (
+        '<div class="academic-card">'
+        '<b>1. Contaminación Marina y Costera en la Bahía de Paita:</b><br>'
+        'La acumulación de plásticos de un solo uso en la franja costera (como la playa El Toril) y el derrame sistemático de aceites usados por la flota pesquera artesanal provocan la degradación de los ecosistemas bentónicos, afectando la biodiversidad y la biomasa marina local.<br><br>'
+        '<b>2. Saturación de Residuos Orgánicos en Mercados de Abastos:</b><br>'
+        'Los mercados de la zona baja de Paita generan diariamente toneladas de residuos orgánicos sin procesar. La descomposición anaeróbica no controlada de estos desechos produce gases de efecto invernadero y lixiviados que contaminan el suelo urbano.<br><br>'
+        '<b>3. Brecha de Información y Falta de Canales Digitales:</b><br>'
+        'A pesar de las iniciativas del Programa Municipal EDUCCA, la ciudadanía carece de una herramienta centralizada y accesible en tiempo real que le permita identificar puntos de acopio autorizados y recibir orientación sobre la correcta disposición de residuos sólidos.'
+        '</div>'
+    )
+    st.markdown(card_text, unsafe_allow_html=True)
 
 # ------------------------------------------------------------------
 # MÓDULO 2: ASISTENTE IA CON RAG
@@ -156,13 +158,14 @@ elif opcion == "Asistente IA RAG (EcoBot)":
                     "Debe ser almacenado en recipientes herméticos y entregado a Empresas Operadoras de Residuos Sólidos (EO-RS) "
                     "o dispuesto en los puntos limpios municipales para su posterior saponificación o conversión en biocombustibles."
                 )
-                st.markdown("""
-                <div class="citation-box">
-                <b>Cita Bibliográfica Oficial (Norma APA 7):</b><br>
-                Decreto Legislativo N.º 1278. (2016). <i>Ley de Gestión Integral de Residuos Sólidos y su Reglamento (D.S. N.º 014-2017-MINAM)</i>. Diario Oficial El Peruano.<br>
-                Programa Municipal EDUCCA Paita. (2024). <i>Plan de Manejo de Aceites Residuales en la Zona Baja de la Provincia de Paita</i>. Municipalidad Provincial de Paita.
-                </div>
-                """, unsafe_allow_html=True)
+                cite1 = (
+                    '<div class="citation-box">'
+                    '<b>Cita Bibliográfica Oficial (Norma APA 7):</b><br>'
+                    'Decreto Legislativo N.º 1278. (2016). <i>Ley de Gestión Integral de Residuos Sólidos y su Reglamento (D.S. N.º 014-2017-MINAM)</i>. Diario Oficial El Peruano.<br>'
+                    'Programa Municipal EDUCCA Paita. (2024). <i>Plan de Manejo de Aceites Residuales en la Zona Baja de la Provincia de Paita</i>. Municipalidad Provincial de Paita.'
+                    '</div>'
+                )
+                st.markdown(cite1, unsafe_allow_html=True)
             elif "plastico" in query_lower or "pet" in query_lower:
                 st.write(
                     "**Dictamen Técnico:** La gestión de plásticos PET en la provincia de Paita se rige por el principio de minimización "
@@ -170,13 +173,14 @@ elif opcion == "Asistente IA RAG (EcoBot)":
                     "Los materiales PET recuperados en la Bahía de Paita y zona urbana deben someterse a limpieza, clasificación por polímeros "
                     "y triturado mecánico para reintegrarse en cadenas de valor de economía circular."
                 )
-                st.markdown("""
-                <div class="citation-box">
-                <b>Cita Bibliográfica Oficial (Norma APA 7):</b><br>
-                Congreso de la República del Perú. (2018). <i>Ley N.º 30884, Ley que regula el plástico de un solo uso y los recipientes o envases descartables</i>. Diario Oficial El Peruano.<br>
-                Ministerio del Ambiente. (2021). <i>Guía técnica para la minimización y segregación de residuos sólidos municipales</i>. MINAM.
-                </div>
-                """, unsafe_allow_html=True)
+                cite2 = (
+                    '<div class="citation-box">'
+                    '<b>Cita Bibliográfica Oficial (Norma APA 7):</b><br>'
+                    'Congreso de la República del Perú. (2018). <i>Ley N.º 30884, Ley que regula el plástico de un solo uso y los recipientes o envases descartables</i>. Diario Oficial El Peruano.<br>'
+                    'Ministerio del Ambiente. (2021). <i>Guía técnica para la minimización y segregación de residuos sólidos municipales</i>. MINAM.'
+                    '</div>'
+                )
+                st.markdown(cite2, unsafe_allow_html=True)
             else:
                 st.write(
                     "**Dictamen Técnico:** En concordancia con la Ley General del Ambiente (Ley N.º 28611), todo generador de residuos en la "
@@ -184,13 +188,14 @@ elif opcion == "Asistente IA RAG (EcoBot)":
                     "b) Residuos inorgánicos reciclables (papel, cartón, plástico, vidrio, metal), c) Residuos no valorizables y d) Residuos peligrosos. "
                     "La Municipalidad Provincial de Paita promueve la formalización de asociaciones de recicladores para su recolección selectiva."
                 )
-                st.markdown("""
-                <div class="citation-box">
-                <b>Cita Bibliográfica Oficial (Norma APA 7):</b><br>
-                Congreso de la República del Perú. (2005). <i>Ley N.º 28611, Ley General del Ambiente</i>. Diario Oficial El Peruano.<br>
-                Ministerio del Ambiente. (2021). <i>Plan Nacional de Educación Ambiental 2021-2030 (PLANEA)</i>. MINAM.
-                </div>
-                """, unsafe_allow_html=True)
+                cite3 = (
+                    '<div class="citation-box">'
+                    '<b>Cita Bibliográfica Oficial (Norma APA 7):</b><br>'
+                    'Congreso de la República del Perú. (2005). <i>Ley N.º 28611, Ley General del Ambiente</i>. Diario Oficial El Peruano.<br>'
+                    'Ministerio del Ambiente. (2021). <i>Plan Nacional de Educación Ambiental 2021-2030 (PLANEA)</i>. MINAM.'
+                    '</div>'
+                )
+                st.markdown(cite3, unsafe_allow_html=True)
 
 # ------------------------------------------------------------------
 # MÓDULO 3: MAPA Y DIRECTORIO
@@ -214,7 +219,7 @@ elif opcion == "Directorio de Puntos Limpios":
         "Categoría de Residuo Aceptado": [
             "Orgánicos Vegetales y Cartón Corrugado",
             "Plástico PET, Polietileno y Latas",
-            "Aceite Usado de Mar y Lubricanetes",
+            "Aceite Usado de Mar y Lubricantes",
             "Papel, Vidrio y Botellas Plásticas",
             "Segregación Multimaterial EDUCCA"
         ],
@@ -237,12 +242,13 @@ elif opcion == "Directorio de Puntos Limpios":
     df_paita = pd.DataFrame(datos_matriz)
     st.dataframe(df_paita, use_container_width=True)
     
-    st.markdown("""
-    <div class="academic-card">
-    <b>Parámetro de Integración Georreferenciada:</b><br>
-    La plataforma integra coordenadas GPS de cada contenedor para permitir a los usuarios trazar rutas óptimas de transporte de residuos mediante mapas digitales accesibles desde dispositivos móviles.
-    </div>
-    """, unsafe_allow_html=True)
+    info_text = (
+        '<div class="academic-card">'
+        '<b>Parámetro de Integración Georreferenciada:</b><br>'
+        'La plataforma integra coordenadas GPS de cada contenedor para permitir a los usuarios trazar rutas óptimas de transporte de residuos mediante mapas digitales accesibles desde dispositivos móviles.'
+        '</div>'
+    )
+    st.markdown(info_text, unsafe_allow_html=True)
 
 # ------------------------------------------------------------------
 # MÓDULO 4: EMPRENDE VERDE
@@ -289,26 +295,28 @@ elif opcion == "Modelo Emprende Verde":
                 humus_obtenido = volumen * 0.42
                 valor_humus = humus_obtenido * 2.80
                 st.write(f"- **Rendimiento en Compost/Humus:** {humus_obtenido:.1f} Kg")
-                st.write(f"- **Valor Estimado en Mercado Agrícola:** S/ {valor_valor_humus if 'valor_valor_humus' in locals() else valor_humus:.2f}")
+                st.write(f"- **Valor Estimado en Mercado Agrícola:** S/ {valor_humus:.2f}")
                 st.write("- **Proceso Técnico:** Biotransformación aeróbica tecnificada y lombricultura.")
 
 # ------------------------------------------------------------------
 # MÓDULO 5: MARCO LEGAL Y FUENTES
 # ------------------------------------------------------------------
 elif opcion == "Marco Legal y Fuentes APA 7":
-    st.header("Sustento Normativo y Referencias Bibliográficas")
+    st.markdown('<div class="section-header">Sustento Normativo y Referencias Bibliográficas</div>', unsafe_allow_html=True)
     st.write(
-        "El presente desarrollo cumple con los estándares exigidos para la Categoría B del certamen [1, 3], estructurando el marco teórico "
+        "El presente desarrollo cumple con los estándares exigidos para la Categoría B del certamen, estructurando el marco teórico "
         "y el repositorio del asistente virtual bajo las siguientes normativas e investigaciones científicas oficializadas:"
     )
     
-    st.markdown("""
-    <div class="academic-card">
-    <b>Referencias Bibliográficas bajo Norma APA (7.ª Edición):</b><br><br>
-    • Congreso de la República del Perú. (2005). <i>Ley N.º 28611, Ley General del Ambiente</i>. Diario Oficial El Peruano.<br><br>
-    • Congreso de la República del Perú. (2016). <i>Decreto Legislativo N.º 1278 que aprueba la Ley de Gestión Integral de Residuos Sólidos</i>. Diario Oficial El Peruano.<br><br>
-    • Congreso de la República del Perú. (2018). <i>Ley N.º 30884, Ley que regula el plástico de un solo uso y los recipientes o envases descartables</i>. Diario Oficial El Peruano.<br><br>
-    • Instituto del Mar del Perú [IMARPE]. (2021). <i>Evaluación ambiental de la Bahía de Paita y diagnóstico de efluentes de la pesca artesanal</i>. Informe Técnico Anual IMARPE.<br><br>
-    • Ministerio del Ambiente [MINAM]. (2021). <i>Plan Nacional de Educación Ambiental 2021-2030 (PLANEA)</i>. Ministerio del Ambiente del Perú.<br><br>
-    • Municipalidad Provincial de Paita. (2024). <i>Plan de Trabajo del Programa Municipal de Educación, Cultura y Ciudadanía Ambiental (EDUCCA - Paita)</i>. Subgerencia de Control Ambiental.
-    </div>
+    ref_text = (
+        '<div class="academic-card">'
+        '<b>Referencias Bibliográficas bajo Norma APA (7.ª Edición):</b><br><br>'
+        '• Congreso de la República del Perú. (2005). <i>Ley N.º 28611, Ley General del Ambiente</i>. Diario Oficial El Peruano.<br><br>'
+        '• Congreso de la República del Perú. (2016). <i>Decreto Legislativo N.º 1278 que aprueba la Ley de Gestión Integral de Residuos Sólidos</i>. Diario Oficial El Peruano.<br><br>'
+        '• Congreso de la República del Perú. (2018). <i>Ley N.º 30884, Ley que regula el plástico de un solo uso y los recipientes o envases descartables</i>. Diario Oficial El Peruano.<br><br>'
+        '• Instituto del Mar del Perú [IMARPE]. (2021). <i>Evaluación ambiental de la Bahía de Paita y diagnóstico de efluentes de la pesca artesanal</i>. Informe Técnico Anual IMARPE.<br><br>'
+        '• Ministerio del Ambiente [MINAM]. (2021). <i>Plan Nacional de Educación Ambiental 2021-2030 (PLANEA)</i>. Ministerio del Ambiente del Perú.<br><br>'
+        '• Municipalidad Provincial de Paita. (2024). <i>Plan de Trabajo del Programa Municipal de Educación, Cultura y Ciudadanía Ambiental (EDUCCA - Paita)</i>. Subgerencia de Control Ambiental.'
+        '</div>'
+    )
+    st.markdown(ref_text, unsafe_allow_html=True)
